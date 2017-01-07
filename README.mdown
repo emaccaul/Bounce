@@ -2,9 +2,11 @@ Bounce
 ======
 
 Compiling:
-    $ gcc -Wall -pedantic bounce.c -o bounce
+    
+    $ make
 
 Usage:
+    
     $ ./bounce [num-balls]
 
 `num-balls` is the number of balls that you want in the scene. The default is to bounce 1 ball.
