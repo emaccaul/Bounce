@@ -147,11 +147,8 @@ int main(int argc, char* argv[])
 
     /* Did the user specify the number of balls to use? */
     if (argc > 1) {
-        balls_len = atoi(argv[1]);
-        if (balls_len <= 0)
-            balls_len = 1;
-        else if (balls_len > MAX_BALLS)
-            balls_len = MAX_BALLS;
+        const int len = atoi(argv[1]);
+        balls_len = max(1, min(len, MAX_BALLS));
     }
 
     srandom(time(0));
