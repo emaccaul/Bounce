@@ -13,6 +13,10 @@ Usage:
 
 Note that for now, the terminal size is assumed to be 80x25. The dimensions can be configured in the source file. Eventually dynamic setting of the terminal size may be implemented. 
 
+Running this program on Ubuntu will look like:
+
+<img src="http://i.imgur.com/2hIy20X.gif" title="Bounce" width='' alt="Bounce" />
+
 About
 -----
 
