@@ -52,15 +52,13 @@ typedef struct {
 } Box;
 
 
-int max(int a, int b)
+/*
+ * Ensures `value' is in range [min, max].
+ */
+int clamp(int value, int min, int max)
 {
-    return a > b ? a : b;
-}
-
-
-int min(int a, int b)
-{
-    return a < b ? a : b;
+    return (value < min) ? min
+            : (value > max) ? max : value;
 }
 
 
@@ -116,8 +114,8 @@ void move_ball(Ball* ball, Box* bounds)
     bounds->cells[ball->ypos][ball->xpos] = EMPTY_CELL;
 
     /* Move the ball, but make sure it stays inside the bounds of the box. */
-    ball->xpos = max(1, min(x, MAX_XPOS));
-    ball->ypos = max(1, min(y, MAX_YPOS));
+    ball->xpos = clamp(x, 1, MAX_XPOS);
+    ball->ypos = clamp(y, 1, MAX_YPOS);
 
     /* Redraw the ball in its new cell. */
     bounds->cells[ball->ypos][ball->xpos] = ball->printable;
@@ -148,7 +146,7 @@ int main(int argc, char* argv[])
     /* Did the user specify the number of balls to use? */
     if (argc > 1) {
         const int len = atoi(argv[1]);
-        balls_len = max(1, min(len, MAX_BALLS));
+        balls_len = clamp(len, 1, MAX_BALLS);
     }
 
     srandom(time(0));
